@@ -31,8 +31,11 @@ const OrderPizza = () => {
     };
 
     return (
-        <Form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-[#5F5F5F] rounded shadow-md">
-            <img src={logo} alt="Logo" className="mb-4" /> {/* Logo eklendi */}
+        <div>
+            <header style={{ backgroundColor: 'red', padding: '20px', textAlign: 'center' }}>
+                <img src={logo} alt="Logo" style={{ width: '150px', height: 'auto' }} />
+            </header>
+            <Form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-[#5F5F5F] rounded shadow-md">
             <FormGroup>
                 <Label for="name" className="text-[#292929]">İsim</Label>
                 <Input
