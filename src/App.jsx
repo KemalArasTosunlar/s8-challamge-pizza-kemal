@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import workintech from '/workintech.svg'
-import './App.css'
+import './App.css';
+import OrderPizza from './OrderPizza';
 
 function App() {
   const [count, setCount] = useState(0)
