@@ -1,14 +1,16 @@
 import React from 'react'; 
-import homeBanner from './assets/home-banner.png'; // Resmi içe aktar
+import homeBanner from './assets/home-banner.png'; 
+import logo from './assets/logo.svg'; // Import the logo
 
 const Home = () => {
     return (
         <div 
             style={{
-                width: '100%',
+                width: `100vw`,
                 height: '100vh',
-                backgroundImage: `url(${homeBanner})`, // Resmi kullan
-                backgroundSize: 'cover',
+                backgroundImage: `url(${homeBanner})`, 
+                backgroundSize: 'cover', // Ensures the image covers the entire div
+                backgroundPosition: 'center', // Centers the background image
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -16,27 +18,15 @@ const Home = () => {
                 textAlign: 'center',
             }}
         >
-            <h1 style={{ fontSize: '86px', color: '#FFFFFF', fontFamily: 'Roboto Condensed', fontWeight: '300', letterSpacing: '1.5px' }}>
-                Teknolojik Yemekler
-            </h1>
-            <p style={{ fontSize: '36px', color: '#FFFFFF', fontFamily: 'Roboto Condensed', fontWeight: '300', letterSpacing: '1.5px' }}>
-                KOD ACIKTIRIR, PİZZA DOYURUR.
+            <img src={logo} alt="Logo" style={{ width: '200px', height: 'auto' }} />
+            <p style={{ fontFamily: 'Roboto Condensed', color: 'white', fontWeight: '300', fontSize: '86px' }}>
+                KOD ACIKTIRIR PİZZA DOYURUR
             </p>
             <button 
-                style={{
-                    backgroundColor: '#FDC913',
-                    color: '#292929',
-                    fontSize: '18px',
-                    fontFamily: 'Barlow',
-                    padding: '10px',
-                    borderRadius: '10px',
-                    transition: 'background-color 0.3s',
-                }} 
-                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#e0b912'} 
-                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#FDC913'}
-                onClick={() => window.location.href='/order'}
+                style={{ backgroundColor: '#FDC913', borderRadius: '30px' }} 
+                onClick={() => window.location.href = '/Order'}
             >
-                Acıktım
+                ACIKTIM
             </button>
         </div>
     );
