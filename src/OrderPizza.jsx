@@ -21,7 +21,7 @@ const OrderPizza = () => {
             toast.error('İsim en az 3 karakter olmalıdır.');
             return;
         }
-        // e.preventDefault(); // Bu satırı kaldırdım
+        e.preventDefault(); // Formun varsayılan gönderimini engelliyorum
         try {
             const response = await axios.post('/api/order', { name, size, toppings, notes });
             toast.success('Siparişiniz başarıyla alındı!');
@@ -91,7 +91,8 @@ const OrderPizza = () => {
                 />
             </FormGroup>
             <Button type="submit" className="bg-[#CE2829] text-white rounded p-2 hover:bg-red-600">Sipariş Ver</Button>
-        </Form>
+            </Form>
+        </div>
     );
 };
 
