@@ -17,7 +17,11 @@ const OrderPizza = () => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        if (name.length < 3) {
+            toast.error('İsim en az 3 karakter olmalıdır.');
+            return;
+        }
+        // e.preventDefault(); // Bu satırı kaldırdım
         try {
             const response = await axios.post('/api/order', { name, size, toppings, notes });
             toast.success('Siparişiniz başarıyla alındı!');
