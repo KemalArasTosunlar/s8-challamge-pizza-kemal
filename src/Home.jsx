@@ -2,6 +2,7 @@ import React from 'react';
 import homeBanner from './assets/home-banner.png';
 import logo from './assets/logo.svg'; // Import the logo
 
+
 const Home = () => {
     return ( 
         <>

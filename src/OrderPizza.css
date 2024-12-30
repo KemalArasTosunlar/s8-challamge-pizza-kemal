@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap');
-
-body {
-    margin: 0;
+.quantity {
+    margin: 0 10px; /* Equal spacing on left and right */
+    text-align: center; /* Center the text */
+}
+body{
     font-family: 'Barlow', sans-serif; /* Updated font to Barlow */
     display: block;
 }
@@ -107,6 +108,12 @@ body {
 }
 
 /* Button styles */
+.quantity-control {
+    margin: 10px 20px; /* Add margin to create space around the quantity control */
+    display: flex;
+    align-items: center;
+}
+
 .quantity-control button {
     background-color: #FDC913; /* Set background color for + and - buttons */
     border: none; /* Remove default border */
@@ -114,6 +121,12 @@ body {
     padding: 10px; /* Add padding */
     border-radius: 5px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor on hover */
+}
+
+.border-box {
+    border: 1px solid #5F5F5F; /* Border color */
+    padding: 10px; /* Padding inside the border box */
+    border-radius: 5px; /* Rounded corners */
 }
 
 .order-button {
@@ -124,3 +137,4 @@ body {
     border-radius: 5px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor on hover */
 }
+
