@@ -8,8 +8,9 @@ body{
 }
 
 .max-w-md {
-    max-width: 2000px; /* Increased maximum width for the form */
+    max-width: 850px; /* Set a new maximum width for the form */
     margin: 0 auto; /* Center the form horizontally */
+
 }
 
 .bg-gray {

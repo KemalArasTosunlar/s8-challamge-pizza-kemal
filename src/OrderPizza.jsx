@@ -24,14 +24,27 @@ const OrderPizza = () => {
 const navigate = useNavigate(); // Initialize useNavigate for navigation
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Formun varsayılan gönderimini engelliyorum
-        if (name.length < 3) {
-            toast.error('İsim en az 3 karakter olmalıdır.');
+        e.preventDefault(); // Prevent default form submission
+        if (name.length < 3 || !size || !dough) {
+            toast.error('Lütfen tüm gerekli alanları doldurun.');
             return;
         }
+        
+        const payload = {
+            isim: name,
+            boyut: size,
+            malzemeler: toppings,
+            özel: notes,
+        };
+
+        console.log('Payload being sent:', payload); // Log the payload
         try {
-            const response = await axios.post('/api/order', { name, size, dough, toppings, notes });
+            const response = await axios.post('https://reqres.in/api/pizza', payload);
+            console.log('Response from API:', response.data); // Log the response
             toast.success('Siparişiniz başarıyla alındı!');
+            setTimeout(() => {
+                navigate('/success'); // Redirect to success page after 5 seconds
+            }, 3000);
         } catch (error) {
             console.error('Error response:', error.response); // Log the error response
             const errorMessage = error.response?.data?.message || 'Sipariş alırken bir hata oluştu.';
@@ -40,10 +53,10 @@ const navigate = useNavigate(); // Initialize useNavigate for navigation
     };
 
     return (
-        <div style={{ height: '100vh' }}>
+        <div style={{ height: '200vh'}}>
             <Form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-gray rounded shadow-md">
                 <FormGroup>
-                    <Label for="name" className="text-[#292929]">İsim</Label>
+                <Label for="name" className="text-[#292929]"><strong>İsim</strong></Label>
                     <Input
                         type="text"
                         id="name"

@@ -1,11 +1,10 @@
 import React from 'react';
-import successImage from '../images/iteration-2-images/Success.png'; // Resim yolu
-
+import './Success.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const Success = () => {
     return (
-        <div className="flex flex-col items-center justify-center h-screen bg-[#FAF7F2]">
-            <h1 className="text-4xl font-bold text-[#292929]">Siparişiniz Alındı!</h1>
-            <img src={successImage} alt="Sipariş Onayı" className="mt-4" />
+        <div className="success-container"> 
+            <h1 className="success-message">TEBRİKLER! SİPARİŞİNİZ ALINDI!</h1>
         </div>
     );
 };
