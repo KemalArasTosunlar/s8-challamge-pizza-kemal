@@ -6,6 +6,7 @@ import Navbar from './components/NavBar/NavBar'; // Importing the Navbar compone
 import './OrderPizza.css'; // Importing the CSS file for styles
 
 const OrderPizza = () => {
+    const [quantity, setQuantity] = useState(1); // Initialize quantity state
     const [name, setName] = useState('');
     const [size, setSize] = useState('');
     const [dough, setDough] = useState(''); // State for dough thickness
@@ -33,8 +34,8 @@ const OrderPizza = () => {
     };
 
     return (
-        <div style={{ height: '100vh' }}>
-            <Form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-gray rounded shadow-md" style={{ marginLeft: '800px', marginRight: '800px' }}>
+        <div style={{ height: '100vh', display: "flex" }}>
+            <Form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-gray rounded shadow-md">
                 <FormGroup>
                     <Label for="name" className="text-[#292929]">İsim</Label>
                     <Input
@@ -48,7 +49,9 @@ const OrderPizza = () => {
                 </FormGroup>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <FormGroup style={{ marginRight: '20px' }}>
-                        <Label for="size" className="text-[#292929]">Boyut Seç <span style={{ color: 'red' }}>*</span></Label>
+                        <Label for="size" className="text-[#292929]">
+                            <strong>Boyut Seç</strong> <span style={{ color: 'red' }}>*</span>
+                        </Label>
                         <div>
                             <label className="container">Küçük
                                 <input type="radio" name="size" value="small" onChange={(e) => setSize(e.target.value)} />
@@ -65,7 +68,9 @@ const OrderPizza = () => {
                         </div>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="dough" className="text-[#292929]">Hamur Kalınlığı <span style={{ color: 'red' }}>*</span></Label>
+                        <Label for="dough" className="text-[#292929]">
+                            <strong>Hamur Kalınlığı</strong> <span style={{ color: 'red' }}>*</span>
+                        </Label>
                         <Input
                             type="select"
                             id="dough"
@@ -80,9 +85,12 @@ const OrderPizza = () => {
                     </FormGroup>
                 </div>
                 <FormGroup>
-                    <Label for="toppings" className="text-[#292929]">Malzemeler</Label>
+                    <Label for="toppings">
+                        <strong className="text-[#292929]">Ek Malzemeler</strong>
+                    </Label>
+                    <p>En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
                     <div>
-                        {['peperoni', 'mushrooms', 'onions', 'sausage', 'bacon'].map((topping) => (
+                        {['peperoni', 'Sosis', 'Kanada Jambonu', 'Tavuk Izgara', 'Soğan', 'Domates', 'Mısır', 'Sucuk', 'Jalepeno', 'Sarımsak', 'Biber', 'Ananas', 'Kabak'].map((topping) => (
                             <div key={topping}>
                                 <Input
                                     type="checkbox"
@@ -97,7 +105,7 @@ const OrderPizza = () => {
                     </div>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="notes" className="text-[#292929]">Notlar</Label>
+                    <Label for="notes" className="text-[#292929]">Siparişinize eklemek istediğiniz bir not var mı?</Label>
                     <Input
                         type="textarea"
                         id="notes"
@@ -106,7 +114,22 @@ const OrderPizza = () => {
                         className="border border-[#292929] rounded p-2"
                     />
                 </FormGroup>
-                <Button type="submit" className="bg-[#CE2829] text-white rounded p-2 hover:bg-red-600">Sipariş Ver</Button>
+                <FormGroup>
+                    <Label className="text-[#292929]">Sipariş Özeti</Label>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div className="quantity-control">
+                                <button type="button" className="decrease" onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
+                                <span className="quantity">{quantity}</span>
+                                <button type="button" className="increase" onClick={() => setQuantity(quantity + 1)}>+</button>
+                            </div>
+                            <div className="summary-box">
+                                <h3>Sipariş Toplamı</h3>
+                                <p>Seçimler: <span className="selections">25.00₺</span></p>
+                                <p>Toplam: <span className="total" style={{ color: 'red' }}>{(25.00 * quantity).toFixed(2)}₺</span></p>
+                                <button type="button" className="order-button" onClick={handleSubmit}>SİPARİŞ VER</button>
+                            </div>
+                        </div>
+                </FormGroup>
             </Form>
         </div>
     );

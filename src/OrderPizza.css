@@ -1,12 +1,12 @@
-/* OrderPizza.css */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap');
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Barlow', sans-serif; /* Updated font to Barlow */
 }
 
 .max-w-md {
-    max-width: 600px; /* Set a maximum width for the form */
+    max-width: 2000px; /* Increased maximum width for the form */
     margin: 0 auto; /* Center the form horizontally */
 }
 
@@ -16,6 +16,7 @@ body {
 
 .text-dark {
     color: #292929; /* Text color for labels */
+    font-weight: bold; /* Make the text bold */
 }
 
 .border {
@@ -45,7 +46,7 @@ body {
     padding-left: 35px;
     margin-bottom: 12px;
     cursor: pointer;
-  font-size: 12px; /* Adjusted font size */
+    font-size: 12px; /* Adjusted font size */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -102,4 +103,23 @@ body {
     height: 8px;
     border-radius: 50%;
     background: white;
+}
+
+/* Button styles */
+.quantity-control button {
+    background-color: #FDC913; /* Set background color for + and - buttons */
+    border: none; /* Remove default border */
+    color: white; /* Set text color to white */
+    padding: 10px; /* Add padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.order-button {
+    background-color: #FDC913; /* Set background color for Sipariş Ver button */
+    border: none; /* Remove default border */
+    color: white; /* Set text color to white */
+    padding: 10px; /* Add padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
 }
