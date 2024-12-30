@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import Navbar from './components/NavBar/NavBar'; // Importing the Navbar component
-import './OrderPizza.css'; // Importing the CSS file for styles
+import './OrderPizza.css'; 
 
 const OrderPizza = () => {
     const [quantity, setQuantity] = useState(1); // Initialize quantity state
     const [name, setName] = useState('');
     const [size, setSize] = useState('');
-    const [dough, setDough] = useState(''); // State for dough thickness
+    const [dough, setDough] = useState(''); // State for dough thicknes
     const [toppings, setToppings] = useState([]);
     const [notes, setNotes] = useState('');
 
@@ -34,7 +33,7 @@ const OrderPizza = () => {
     };
 
     return (
-        <div style={{ height: '100vh', display: "flex" }}>
+        <div style={{ height: '100vh'}}>
             <Form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-gray rounded shadow-md">
                 <FormGroup>
                     <Label for="name" className="text-[#292929]">İsim</Label>
@@ -89,18 +88,20 @@ const OrderPizza = () => {
                         <strong className="text-[#292929]">Ek Malzemeler</strong>
                     </Label>
                     <p>En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
-                    <div>
-                        {['peperoni', 'Sosis', 'Kanada Jambonu', 'Tavuk Izgara', 'Soğan', 'Domates', 'Mısır', 'Sucuk', 'Jalepeno', 'Sarımsak', 'Biber', 'Ananas', 'Kabak'].map((topping) => (
-                            <div key={topping}>
-                                <Input
-                                    type="checkbox"
-                                    id={topping}
-                                    checked={toppings.includes(topping)}
-                                    onChange={() => handleToppingChange(topping)}
-                                    className="mr-2"
-                                />
-                                <Label for={topping} className="text-[#292929]">{topping}</Label>
-                            </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                        {['peperoni', 'Sosis', 'Kanada Jambonu', 'Tavuk Izgara', 'Soğan', 'Domates', 'Mısır', 'Sucuk', 'Jalepeno', 'Sarımsak', 'Biber', 'Ananas', 'Kabak'].map((topping, index) => (
+                            index < 15 && (
+                                <div key={topping} style={{ width: '30%' }}>
+                                    <Input
+                                        type="checkbox"
+                                        id={topping}
+                                        checked={toppings.includes(topping)}
+                                        onChange={() => handleToppingChange(topping)}
+                                        className="mr-2"
+                                    />
+                                    <Label for={topping} className="text-[#292929]">{topping}</Label>
+                                </div>
+                            )
                         ))}
                     </div>
                 </FormGroup>

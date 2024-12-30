@@ -3,6 +3,7 @@
 body {
     margin: 0;
     font-family: 'Barlow', sans-serif; /* Updated font to Barlow */
+    display: block;
 }
 
 .max-w-md {
@@ -41,7 +42,7 @@ body {
 
 /* Customize the label (the container) */
 .container {
-    display: block;
+    display: flex;
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
