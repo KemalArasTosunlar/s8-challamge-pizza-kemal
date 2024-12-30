@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './Home'; // Ensure Home is imported
 import OrderPizza from './OrderPizza';
 import './App.css';
+import Navbar from './components/NavBar/NavBar'; // Importing Navbar component
 import { ToastContainer } from 'react-toastify';
+import Footer from './components/Footer/Footer'; // Importing Footer component
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -18,8 +20,12 @@ function App() {
   return (
     <Router>
       <ToastContainer />
+      <Navbar /> {/* NavBar visible on all pages */}
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact>
+          <Home />
+          <Footer /> {/* Footer visible only on the homepage */}
+        </Route>
         <Route path="/order" render={() => (
           <OrderPizza 
             name={name} 

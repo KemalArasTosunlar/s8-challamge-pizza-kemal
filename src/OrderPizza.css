@@ -1,0 +1,105 @@
+/* OrderPizza.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.max-w-md {
+    max-width: 600px; /* Set a maximum width for the form */
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+.bg-gray {
+    background-color: white; /* Background color for the form */
+}
+
+.text-dark {
+    color: #292929; /* Text color for labels */
+}
+
+.border {
+    border: 1px solid white; /* Border color for inputs */
+}
+
+.rounded {
+    border-radius: 8px; /* Rounded corners for inputs */
+}
+
+.p-2 {
+    padding: 0.5rem; /* Padding for inputs */
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect for the form */
+}
+
+.hover-bg-red:hover {
+    background-color: #C72A2A; /* Darker red on hover for the button */
+}
+
+/* Customize the label (the container) */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  font-size: 12px; /* Adjusted font size */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}

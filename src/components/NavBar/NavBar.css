@@ -1,0 +1,9 @@
+.navbar {
+    background-color: var(--primary-red);
+    color: white; /* Optional: to ensure text is visible on red background */
+    width: 100%; /* Ensure the navbar spans the full width */
+    padding: 1em; /* Adjust padding to maintain appearance */
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+}
