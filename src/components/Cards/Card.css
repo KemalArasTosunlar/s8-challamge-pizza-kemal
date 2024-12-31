@@ -1,0 +1,31 @@
+.card-item {
+  list-style: none;
+  margin: 10px;
+  position: relative;
+}
+
+.card-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.card-item button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #FDC913;
+  border-radius: 30px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.card-item p {
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  color: white;
+  font-weight: bold;
+}

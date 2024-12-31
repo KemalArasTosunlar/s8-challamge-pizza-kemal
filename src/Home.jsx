@@ -1,7 +1,8 @@
 import React from 'react'; 
 import homeBanner from './assets/home-banner.png';
 import logo from './assets/logo.svg'; // Import the logo
-
+import { icons } from './Data'; // Import the icons array
+import Cards from './components/Cards/Cards'; // Import the Cards component
 
 const Home = () => {
     return ( 
@@ -11,8 +12,8 @@ const Home = () => {
                     width: `100vw`,
                     height: '100vh',
                     backgroundImage: `url(${homeBanner})`, 
-                    backgroundSize: 'cover', // Ensures the image covers the entire div
-                    backgroundPosition: 'center', // Centers the background image
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -20,7 +21,6 @@ const Home = () => {
                     textAlign: 'center',
                 }}
             >
-               
                 <p style={{ fontFamily: 'Roboto Condensed', color: 'white', fontWeight: '200', fontSize: '86px' }}>
                     KOD ACIKTIRIR PİZZA DOYURUR
                 </p>
@@ -31,6 +31,22 @@ const Home = () => {
                     ACIKTIM
                 </button>
             </div>
+            <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'white', padding: '20px' }}>
+                {icons.map((icon, index) => (
+                    <div key={icon.id} style={{ display: 'flex', alignItems: 'center', margin: '10px' }}>
+                        <img src={icon.src} alt={`Icon ${icon.id}`} style={{ width: '50px', height: '50px', marginRight: '10px' }} />
+                        <span>{[
+                            "Yeni Kore",
+                            "Pizza",
+                            "Burger",
+                            "Kızartmalar",
+                            "Fast Food",
+                            "Gazlı İçecek"
+                        ][index]}</span>
+                    </div>
+                ))}
+            </div>
+            <Cards /> {/* Add the Cards component here */}
         </>
     );
 };
