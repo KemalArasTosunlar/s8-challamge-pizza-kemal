@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import './OrderPizza.css';
+import { pizza } from './Data'; // Import the pizza data
 
 const OrderPizza = () => {
     const [quantity, setQuantity] = useState(1); // Initialize quantity state
@@ -42,8 +42,10 @@ const navigate = useNavigate(); // Initialize useNavigate for navigation
             const response = await axios.post('https://reqres.in/api/pizza', payload);
             console.log('Response from API:', response.data); // Log the response
             toast.success('Siparişiniz başarıyla alındı!');
+            const totalPrice = (parseFloat(pizza.price.replace('₺', '')) * quantity + toppings.length * 5).toFixed(2);
             setTimeout(() => {
-                navigate('/success'); // Redirect to success page after 5 seconds
+                navigate('/success', { state: { pizzaName: pizza.name, selectedToppings: toppings, totalPrice } });
+                // Redirect to success page after 3 seconds with state
             }, 3000);
         } catch (error) {
             console.error('Error response:', error.response); // Log the error response
@@ -54,6 +56,15 @@ const navigate = useNavigate(); // Initialize useNavigate for navigation
 
     return (
         <div style={{ height: '200vh'}}>
+            <div style={{ textAlign: 'center' }}>
+                <h2 className="pizza-name">{pizza.name}</h2>
+                <div className="pizza-info" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                    <span>Fiyat: {pizza.price}</span>
+                    <span>Puan: {pizza.rate}</span>
+                    <span>Yorum: {pizza.comments}</span>
+                </div>
+                <p className="pizza-description">{pizza.description}</p>
+            </div>
             <Form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-gray rounded shadow-md">
                 <FormGroup>
                 <Label for="name" className="text-[#292929]"><strong>İsim</strong></Label>
@@ -148,8 +159,10 @@ const navigate = useNavigate(); // Initialize useNavigate for navigation
                         </div>
                         <div className="summary-box">
                             <h3>Sipariş Toplamı</h3>
-                            <p>Seçimler: <span className="selections">25.00₺</span></p>
-                            <p>Toplam: <span className="total" style={{ color: 'red' }}>{(25.00 * quantity).toFixed(2)}₺</span></p>
+                            <p>Seçimler: <span className="selections">{pizza.name} + {toppings.join(', ')}</span></p>
+                            <p>Toplam: <span className="total" style={{ color: 'red' }}>
+                                {(parseFloat(pizza.price.replace('₺', '')) * quantity + toppings.length * 5).toFixed(2)}₺
+                            </span></p>
                             <button type="submit" className="order-button">SİPARİŞ VER</button>
                         </div>
                     </div>
