@@ -1,7 +1,4 @@
-.quantity {
-    margin: 0 10px; /* Equal spacing on left and right */
-    text-align: center; /* Center the text */
-}
+/* General styles */
 body {
     font-family: 'Barlow', sans-serif; /* Updated font to Barlow */
     display: block; /* Change to block to prevent stretching */
@@ -10,7 +7,6 @@ body {
 .max-w-md {
     max-width: 850px; /* Set a new maximum width for the form */
     margin: 0 auto; /* Center the form horizontally */
-
 }
 
 .bg-gray {
@@ -137,5 +133,31 @@ body {
     padding: 10px; /* Add padding */
     border-radius: 5px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
+.order-button:hover {
+    background-color: #e0a800; /* Darker shade on hover */
+}
+
+/* Updated styles for pizza name and description */
+.pizza-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%; /* Ensure full width */
+    text-align: center; /* Center align the title */
+}
+
+.pizza-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%; /* Ensure full width */
+}
+
+.pizza-description {
+    margin-top: 10px;
+    width: 100%; /* Ensure full width */
+    text-align: center; /* Center align the description */
+}

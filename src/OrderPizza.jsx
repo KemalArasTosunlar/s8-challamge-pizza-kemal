@@ -4,6 +4,7 @@ import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { pizza } from './Data'; // Import the pizza data
+import './OrderPizza.css'; // Import the OrderPizza CSS file
 
 const OrderPizza = () => {
     const [quantity, setQuantity] = useState(1); // Initialize quantity state
@@ -21,7 +22,7 @@ const OrderPizza = () => {
         );
     };
 
-const navigate = useNavigate(); // Initialize useNavigate for navigation
+    const navigate = useNavigate(); // Initialize useNavigate for navigation
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission
@@ -30,6 +31,7 @@ const navigate = useNavigate(); // Initialize useNavigate for navigation
             return;
         }
         
+        const totalPrice = (parseFloat(pizza.price.replace('₺', '')) * quantity + toppings.length * 5).toFixed(2);
         const payload = {
             isim: name,
             boyut: size,
@@ -42,7 +44,6 @@ const navigate = useNavigate(); // Initialize useNavigate for navigation
             const response = await axios.post('https://reqres.in/api/pizza', payload);
             console.log('Response from API:', response.data); // Log the response
             toast.success('Siparişiniz başarıyla alındı!');
-            const totalPrice = (parseFloat(pizza.price.replace('₺', '')) * quantity + toppings.length * 5).toFixed(2);
             setTimeout(() => {
                 navigate('/success', { state: { pizzaName: pizza.name, selectedToppings: toppings, totalPrice } });
                 // Redirect to success page after 3 seconds with state
@@ -55,19 +56,19 @@ const navigate = useNavigate(); // Initialize useNavigate for navigation
     };
 
     return (
-        <div style={{ height: '200vh'}}>
-            <div style={{ textAlign: 'center' }}>
-                <h2 className="pizza-name">{pizza.name}</h2>
-                <div className="pizza-info" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                    <span>Fiyat: {pizza.price}</span>
-                    <span>Puan: {pizza.rate}</span>
-                    <span>Yorum: {pizza.comments}</span>
+        <Form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-gray rounded shadow-md">
+            <div style={{ height: '200vh' }}>
+                <div style={{ textAlign: 'center' }}>
+                    <h2 className="pizza-name">{pizza.name}</h2>
+                    <div className="pizza-info" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                        <span>Fiyat: {pizza.price}</span>
+                        <span>Puan: {pizza.rate}</span>
+                        <span>Yorum: {pizza.comments}</span>
+                    </div>
+                    <p className="pizza-description">{pizza.description}</p>
                 </div>
-                <p className="pizza-description">{pizza.description}</p>
-            </div>
-            <Form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-gray rounded shadow-md">
                 <FormGroup>
-                <Label for="name" className="text-[#292929]"><strong>İsim</strong></Label>
+                    <Label for="name" className="text-[#292929]"><strong>İsim</strong></Label>
                     <Input
                         type="text"
                         id="name"
@@ -167,8 +168,8 @@ const navigate = useNavigate(); // Initialize useNavigate for navigation
                         </div>
                     </div>
                 </FormGroup>
-            </Form>
-        </div>
+            </div>
+        </Form>
     );
 };
 
