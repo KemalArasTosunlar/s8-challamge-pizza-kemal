@@ -21,6 +21,7 @@ const Success = () => {
             <h2>{location.state.pizzaName}</h2>
             <p>Seçilen Malzemeler: {location.state.selectedToppings.join(', ')}</p>
             <p>Toplam Fiyat: {location.state.totalPrice}₺</p>
+            <Link to="/" className="home-button">Ana Sayfa</Link>
         </div>
     );
 };

@@ -1,17 +1,29 @@
 .success-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; 
-    width: 100vw; 
-    background-color: #C72A2A; /* Arka plan rengi (kırmızı) */
-    color: white; /* Yazı rengi (beyaz) */
-    text-align: center; /* Yazıyı ortalamak için */
+    background-color: #CE2829; /* Set background color */
+    color: white; /* Set text color to white for better contrast */
+    font-family: 'Roboto Condensed', sans-serif; /* Set font to Roboto Condensed */
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Full viewport height */
+    margin-top: 0; /* Space above the button */
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
-.success-message {
-    font-size: 4rem; /* Yazı boyutu */
-    font-weight: lighter;
-   font-family: Roboto-Condensed;
+.home-button {
+    display: inline-block;
+    background-color: #FDC913; /* Button background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding for the button */
+    border: none; /* No border */
+    border-radius: 30px; /* Set border radius to 30px */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    margin-top: 20px; /* Space above the button */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.home-button:hover {
+    background-color: #e0a800; /* Darker shade on hover */
 }

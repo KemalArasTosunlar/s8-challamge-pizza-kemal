@@ -2,9 +2,9 @@
     margin: 0 10px; /* Equal spacing on left and right */
     text-align: center; /* Center the text */
 }
-body{
+body {
     font-family: 'Barlow', sans-serif; /* Updated font to Barlow */
-    display: flex;
+    display: block; /* Change to block to prevent stretching */
 }
 
 .max-w-md {
