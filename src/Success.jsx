@@ -1,29 +1,30 @@
 import React from 'react';
 import './Success.css';
-import { useLocation, Link } from 'react-router-dom';
 
-const Success = () => {
-    const location = useLocation();
-
-    if (!location.state) {
-        return (
-            <div className="success-container">
-                <h1>Hata!</h1>
-                <p>Sipariş bilgilerine ulaşılamadı.</p>
-                <Link to="/">Ana Sayfaya Dön</Link>
-            </div>
-        );
-    }
-
+const Success = ({ pizzaName, selectedToppings, totalPrice, goToHome }) => {
+  if (!pizzaName || !selectedToppings || !totalPrice) {
     return (
-        <div className="success-container"> 
-            <h1 className="success-message">TEBRİKLER! SİPARİŞİNİZ ALINDI!</h1>
-            <h2>{location.state.pizzaName}</h2>
-            <p>Seçilen Malzemeler: {location.state.selectedToppings.join(', ')}</p>
-            <p>Toplam Fiyat: {location.state.totalPrice}₺</p>
-            <Link to="/" className="home-button">Ana Sayfa</Link>
-        </div>
+      <div className="success-container">
+        <h1>Hata!</h1>
+        <p>Sipariş bilgilerine ulaşılamadı.</p>
+        <button onClick={goToHome} className="home-button">
+          Ana Sayfaya Dön
+        </button>
+      </div>
     );
+  }
+
+  return (
+    <div className="success-container"> 
+      <h1 className="success-message">TEBRİKLER! SİPARİŞİNİZ ALINDI!</h1>
+      <h2>{pizzaName}</h2>
+      <p>Seçilen Malzemeler: {selectedToppings.join(', ')}</p>
+      <p>Toplam Fiyat: {totalPrice}₺</p>
+      <button onClick={goToHome} className="home-button">
+        Ana Sayfa
+      </button>
+    </div>
+  );
 };
 
 export default Success;

@@ -1,10 +1,10 @@
 import React from 'react'; 
 import homeBanner from './assets/home-banner.png';
-import logo from './assets/logo.svg'; // Import the logo
-import { icons } from './Data'; // Import the icons array
-import Cards from './components/Cards/Cards'; // Import the Cards component
+import logo from './assets/logo.svg';
+import { icons } from './Data';
+import Cards from './components/Cards/Cards';
 
-const Home = () => {
+const Home = ({ goToOrder }) => {
     return ( 
         <>
             <div 
@@ -26,7 +26,7 @@ const Home = () => {
                 </p>
                 <button 
                     style={{ backgroundColor: '#FDC913', borderRadius: '30px' }} 
-                    onClick={() => window.location.href = '/Order'}
+                    onClick={goToOrder}
                 >
                     ACIKTIM
                 </button>

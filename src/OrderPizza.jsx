@@ -1,59 +1,75 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { pizza } from './Data'; // Import the pizza data
-import './OrderPizza.css'; // Import the OrderPizza CSS file
+import { pizza } from './Data';
+import './OrderPizza.css';
 
-const OrderPizza = () => {
-    const [quantity, setQuantity] = useState(1); // Initialize quantity state
-    const [name, setName] = useState('');
-    const [size, setSize] = useState('');
-    const [dough, setDough] = useState(''); // State for dough thickness
-    const [toppings, setToppings] = useState([]);
-    const [notes, setNotes] = useState('');
-    const [formErrors, setFormErrors] = useState({}); // State for form errors
-    const [isFormValid, setIsFormValid] = useState(false); // State for form validity
+const OrderPizza = ({
+  name,
+  setName,
+  size,
+  setSize,
+  toppings,
+  setToppings,
+  notes,
+  setNotes,
+  goToSuccess
+}) => {
+  const [quantity, setQuantity] = useState(1);
+  const [dough, setDough] = useState('');
 
-    const handleToppingChange = (topping) => {
-        setToppings((prev) => 
-            prev.includes(topping) ? prev.filter((t) => t !== topping) : [...prev, topping]
-        );
+  const handleToppingChange = (topping) => {
+    setToppings((prev) => 
+      prev.includes(topping) ? prev.filter((t) => t !== topping) : [...prev, topping]
+    );
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (name.length < 3 || !size) {
+      toast.error('Lütfen zorunlu alanları doldurun.');
+      return;
+    }
+    
+    const totalPrice = (parseFloat(pizza.price.replace('₺', '')) * quantity + toppings.length * 5).toFixed(2);
+    const payload = {
+      isim: name,
+      boyut: size,
+      malzemeler: toppings,
+      özel: notes,
     };
 
-    const navigate = useNavigate(); // Initialize useNavigate for navigation
-
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission
-        if (name.length < 3 || !size || !dough) {
-            toast.error('Lütfen tüm gerekli alanları doldurun.');
-            return;
+    console.log('Payload being sent:', payload);
+    try {
+      const response = await axios.post('https://reqres.in/api/pizza', payload);
+      console.log('API Yanıtı:');
+      console.log('Sipariş ID:', response.data.id);
+      console.log('Sipariş Tarihi:', response.data.createdAt);
+      console.log('Sipariş Detayları:', {
+        isim: response.data.isim,
+        boyut: response.data.boyut,
+        malzemeler: response.data.malzemeler,
+        özel: response.data.özel
+      });
+      toast.success('Siparişiniz başarıyla alındı!');
+      setTimeout(() => {
+        if (pizza.name && toppings && totalPrice) {
+          goToSuccess({ 
+            pizzaName: pizza.name, 
+            selectedToppings: toppings, 
+            totalPrice: totalPrice + '₺' 
+          });
+        } else {
+          toast.error('Sipariş bilgileri eksik. Lütfen tekrar deneyin.');
         }
-        
-        const totalPrice = (parseFloat(pizza.price.replace('₺', '')) * quantity + toppings.length * 5).toFixed(2);
-        const payload = {
-            isim: name,
-            boyut: size,
-            malzemeler: toppings,
-            özel: notes,
-        };
-
-        console.log('Payload being sent:', payload); // Log the payload
-        try {
-            const response = await axios.post('https://reqres.in/api/pizza', payload);
-            console.log('Response from API:', response.data); // Log the response
-            toast.success('Siparişiniz başarıyla alındı!');
-            setTimeout(() => {
-                navigate('/success', { state: { pizzaName: pizza.name, selectedToppings: toppings, totalPrice } });
-                // Redirect to success page after 3 seconds with state
-            }, 3000);
-        } catch (error) {
-            console.error('Error response:', error.response); // Log the error response
-            const errorMessage = error.response?.data?.message || 'Sipariş alırken bir hata oluştu.';
-            toast.error(errorMessage); // Display specific error message
-        }
-    };
+      }, 3000);
+    } catch (error) {
+      console.error('Error response:', error.response);
+      const errorMessage = error.response?.data?.message || 'Sipariş alırken bir hata oluştu.';
+      toast.error(errorMessage);
+    }
+  };
 
     return (
         <Form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-gray rounded shadow-md">
