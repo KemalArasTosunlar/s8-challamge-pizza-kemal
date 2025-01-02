@@ -1,0 +1,43 @@
+body{
+    background-color: #FAF7F2;
+}
+.food-deals-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.food-deals-cards {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+}
+
+.food-deal-card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.food-deal-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.food-deal-info {
+  padding: 1rem;
+}
+
+.food-deal-info h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.food-deal-rating {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  color: #666;
+}

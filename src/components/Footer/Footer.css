@@ -1,6 +1,102 @@
-.footer {
-    background-color: #f8f9fa; /* Light background color */
-    color: #343a40; /* Dark text color */
-    text-align: center; /* Centered text */
-    padding: 1em; /* Padding for spacing */
+.footer-container {
+  background-color: #292929;
+  color: white;
+  padding: 2rem 1rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.footer-column {
+  margin-bottom: 2rem;
+}
+
+.footer-logo {
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-list li {
+  margin: 0.5rem 0;
+}
+
+.menu-list a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu-list a:hover {
+  color: #fff;
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.instagram-grid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #444;
+  margin-top: 2rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-column {
+    text-align: center;
+  }
+  
+  .instagram-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 300px;
+    margin: 0 auto;
+  }
 }

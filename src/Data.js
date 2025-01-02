@@ -21,6 +21,37 @@ export const pizza = {
   ],
 };
 
+export const pizzaTerminal = {
+  name: "Terminal Pizza",
+  
+  price: "60₺", 
+  rate: 4.9,
+  comments: 200,
+  toppings: [
+    "Pepperoni",
+    "Tavuk Izgara",
+    "Sarımsak", 
+    "Ananas",
+    "Sosis", 
+    "Soğan",
+    "Sucuk",
+    "Biber",
+    "Kabak",
+    "Kanada Jambonu",
+    "Domates",
+    "Jalapeno",
+    "Salam",
+  ],
+};
+
+export const burger = {
+  name: "useEffect Tavuklu Burger",
+  
+  price: "60₺", 
+  rate: 4.9,
+  comments: 200,
+
+};
 export const icons = [
   { id: 1, src: "images/iteration-2-images/icons/1.svg" },
   { id: 2, src: "images/iteration-2-images/icons/2.svg" },

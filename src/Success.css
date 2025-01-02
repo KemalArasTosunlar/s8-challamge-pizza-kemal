@@ -27,3 +27,48 @@
 .home-button:hover {
     background-color: #e0a800; /* Darker shade on hover */
 }
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .success-container {
+        padding: 0 20px;
+        text-align: center;
+    }
+    
+    .success-message {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    p {
+        font-size: 16px;
+    }
+    
+    .home-button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .success-message {
+        font-size: 20px;
+    }
+    
+    h2 {
+        font-size: 18px;
+    }
+    
+    p {
+        font-size: 14px;
+    }
+    
+    .home-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+}

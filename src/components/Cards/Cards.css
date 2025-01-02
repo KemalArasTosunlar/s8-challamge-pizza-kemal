@@ -1,26 +1,124 @@
-.card-container {
+.cards-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center; 
+  flex-direction: column;
   align-items: center;
-  font-family: "Barlow", sans-serif;
-  padding: 0.2em 18em;
-
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
 }
 
-.card-item {
-  list-style: none;
-  text-align: center;
-  background-color: var(--bg-white);
-  border-radius: 10px;
-  padding: 1.5em 2em;
-}
 
-.card-item img {
-  width: 11em;
-}
+  .cards-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem;
+  }
 
-.card-detail {
+.card {
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-content {
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  padding: 2rem;
+  color: white;
+  text-align: left;
+}
+
+.card-1 {
+  width: 100%;
+  max-width: 350px;
+  height: 500px;
+  background-image: url('/images/iteration-2-images/cta/kart-1.png');
+}
+
+.card-2 {
+  width: 100%;
+  max-width: 750px;
+  height: 250px;
+  background-image: url('/images/iteration-2-images/cta/kart-2.png');
+}
+
+.card-3 {
+  width: 100%;
+  max-width: 750px;
+  height: 250px;
+  background-image: url('/images/iteration-2-images/cta/kart-3.png');
+}
+
+@media (max-width: 768px) {
+  .card-1,
+  .card-2,
+  .card-3 {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 3/4;
+  }
+}
+
+.card-title {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.card-subtitle {
+  font-family: 'Barlow', sans-serif;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.card-text {
+  font-family: 'Barlow', sans-serif;
+  margin: 1rem 0;
+}
+
+.card-button {
+  background-color: #FDC913;
+  border: none;
+  border-radius: 25px;
+  padding: 1rem 2.5rem;
+  font-family: 'Barlow', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #333;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.card-button:hover {
+  background-color: #ffdf5e;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card {
+    width: 80%;
+    margin-bottom: 1.5rem;
+  }
 }
