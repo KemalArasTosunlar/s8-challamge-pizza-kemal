@@ -396,3 +396,175 @@ IT1'i bitirdikten sonra çalışmanı daha da ileri götürebilirsin. Buradaki h
 
 - **3 Gereksinimleri Aşıyor:**
   - Doğru yanıta ek, en az bir başka çözüm ile de daha geniş perspektiftan yanıtlayabilme, ikisi arasındaki benzerlik ve uygulama farklarını karşılaştırabilmek.
+
+# 
+# SPA Projesi: Teknolojik Yemekler
+
+## Genel Açıklama
+
+Bu proje, Workintech eğitimi kapsamında öğrendiğim kavramları ve teknikleri uygulayarak geliştirdiğim bir Single Page Application (SPA) projesidir. "Teknolojik Yemekler" adlı bir web sitesi oluşturuldu. Proje iki aşamadan (İterasyon 1 ve İterasyon 2) oluşmakta olup her aşamada farklı hedefler gerçekleştirilmiştir.
+
+----------
+
+## Kullanılan Teknolojiler ve Kütüphaneler
+
+-   React ve React DOM (v18.2.0): Temel UI geliştirme kütüphanesi.
+    
+-   React Router DOM (v7.1.1): Sayfa yönlendirme için kullanıldı.
+    
+-   Axios (v1.7.9): API istekleri için.
+    
+-   React Toastify (v11.0.2): Kullanıcı bildirimleri eklemek için.
+    
+-   Tailwind CSS (v3.4.17): Stil yönetimi için utility-first CSS framework.
+    
+-   Cypress (v13.17.0): End-to-end testler için.
+    
+-   Vite (v5.4.11): Proje build ve geliştirme aracı.
+    
+
+----------
+
+## Proje Geliştirme Süreci
+
+### Temel Yapı
+
+-   Vite: Proje oluşturma ve geliştirme ortamı.
+    
+-   Tailwind CSS Entegrasyonu: Utility-first bir yaklaşım ile CSS stil yönetimi.
+    
+-   React Router DOM: Sayfa yönlendirmelerinin kolayca yapılmasını sağladı.
+    
+
+----------
+
+## İterasyon 1: Minimum Viable Product (MVP)
+
+### Hedefler
+
+1.  Ana Sayfa
+    
+
+-   Kullanıcıyı sipariş formuna yönlendiren bir "Hero" alanı tasarlandı.
+    
+
+3.  Sipariş Formu
+    
+
+-   Kullanıcı bilgisi (isim, boyut, malzemeler) ve not girişi alanları eklendi.
+    
+-   Form validasyonları: İsim alanı en az 3 karakter gerektiriyor; malzeme seçimleri 4 ile 10 arasında olmalı.
+    
+-   "Sipariş Ver" butonuna tıklandığında eksik bilgi varsa form gönderimi engelleniyor.
+    
+-   API isteği Axios ile yapılmakta ve yanıt console'a basılmakta.
+    
+-   Mock API: [https://reqres.in/api/pizza](https://reqres.in/api/pizza).
+    
+
+5.  Sipariş Onay Sayfası
+    
+
+-   Sipariş özeti ve gönderilen verilerin kullanıcıya gösterimi.
+    
+
+### Teknik Detaylar
+
+-   State Yönetimi:
+    
+
+-   Form state'i useState ile yönetildi.
+    
+-   Validasyonlar controlled component yaklaşımı ile sağlandı.
+    
+
+-   API İstekleri:
+    
+
+-   Sipariş verisi Axios ile mock API'ye POST edildi.
+    
+
+-   Cypress Testleri:
+    
+
+-   Input alanına metin girme testi.
+    
+-   Çoklu malzeme seçimi testi.
+    
+-   Form gönderimi testi.
+    
+
+----------
+
+## İterasyon 2: Gelişmiş Özellikler
+
+### Hedefler
+
+1.  Tasarım Güncellemeleri
+    
+
+-   Responsive tasarım uygulandı.
+    
+-   Sipariş sayfasında sipariş özeti ve API yanıtının gösterimi eklendi.
+    
+-   Sipariş formu elemanları (input, checkbox, radio) özelleştirildi.
+    
+
+3.  Kullanıcı Geri Bildirimleri
+    
+
+-   React Toastify ile bildirimler eklendi.
+    
+-   Ağ hatası durumunda kullanıcıya uyarı mesajı gösterildi.
+    
+
+5.  Proplifting ile State Yönetimi
+    
+
+-   Sipariş formundan sipariş onay sayfasına veri aktarıldı.
+    
+-   useState ile state parent component'te tutulup child component'lere props olarak iletildi.
+    
+
+7.  Ek Cypress Testleri:
+    
+
+-   Tüm form alanlarının doğru çalıştığından emin olmak için detaylı testler yazıldı.
+    
+
+### Teknik Detaylar
+
+-   Component Yapısı:
+    
+
+-   Yeniden kullanılabilir yapılar için NavBar, Footer, Cards gibi bileşenler oluşturuldu.
+    
+
+-   Axios ve Toastify:
+    
+
+-   Kullanıcı bildirimleri için başarılı ve başarısız API çağrılarında Toastify entegrasyonu yapıldı.
+    
+
+-   Tailwind CSS:
+    
+
+-   Özel stil ihtiyaçları için utility-first sınıflar kullanıldı.
+    
+
+----------
+
+## Sonuç
+
+Proje, hem temel seviyede hem de ileri düzeyde SPA geliştirme becerilerimi sergilememi sağladı. Bu süreçte öğrendiklerim:
+
+-   React ile state yönetimi ve component yapısının detayları.
+    
+-   API entegrasyonu ve hata yönetimi.
+    
+-   Responsive ve kullanıcı dostu tasarım geliştirme.
+    
+-   Cypress ile E2E test yazımı.
+    
+
+Proje, hem teknik açıdan hem de tasarım açısından tamamlanmış olup portföyüme eklemek için uygun hale getirilmiştir.

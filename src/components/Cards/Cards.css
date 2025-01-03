@@ -7,14 +7,13 @@
   width: 100%;
 }
 
-
-  .cards-container {
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2rem;
-    padding: 2rem;
-  }
+.cards-container {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+}
 
 .card {
   border-radius: 15px;
@@ -50,14 +49,14 @@
 
 .card-2 {
   width: 100%;
-  max-width: 750px;
+  max-width: 900px;
   height: 250px;
   background-image: url('/images/iteration-2-images/cta/kart-2.png');
 }
 
 .card-3 {
   width: 100%;
-  max-width: 750px;
+  max-width: 900px;
   height: 250px;
   background-image: url('/images/iteration-2-images/cta/kart-3.png');
 }
