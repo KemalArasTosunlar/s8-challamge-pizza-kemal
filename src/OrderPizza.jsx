@@ -27,7 +27,7 @@ const OrderPizza = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name.length < 3 || !size) {
+    if (name.length < 3 || !size || toppings.length < 4 || toppings.length > 10) {
       toast.error('Lütfen zorunlu alanları doldurun.');
       return;
     }
