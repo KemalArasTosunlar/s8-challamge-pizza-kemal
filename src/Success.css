@@ -1,31 +1,57 @@
 .success-container {
-    background-color: #CE2829; /* Set background color */
-    color: white; /* Set text color to white for better contrast */
-    font-family: 'Roboto Condensed', sans-serif; /* Set font to Roboto Condensed */
-    display: flex; /* Use flexbox for centering */
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
+    background-color: #CE2829; /* Red background */
+    color: white; /* White text color for contrast */
+    font-family: 'Roboto Condensed', sans-serif; /* Use Roboto Condensed font */
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Vertically center content */
+    align-items: center; /* Horizontally center content */
     height: 100vh; /* Full viewport height */
-    margin-top: 0; /* Space above the button */
+    margin: 0; /* Remove margin */
+    padding: 20px; /* Add padding for better spacing */
     cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow around the container */
+    transition: background 0.3s ease; /* Smooth background transition */
+}
+
+.success-message {
+    font-size: 36px; /* Larger font for the success message */
+    font-weight: 700; /* Bold font weight for emphasis */
+    text-align: center; /* Center the text */
+    animation: fadeIn 1s ease-out; /* Animation for the success message */
 }
 
 .home-button {
     display: inline-block;
-    background-color: #FDC913; /* Button background color */
-    color: white; /* Text color */
-    padding: 10px 20px; /* Padding for the button */
-    border: none; /* No border */
-    border-radius: 30px; /* Set border radius to 30px */
-    text-align: center; /* Center the text */
+    background-color: #FDC913; /* Yellow button background */
+    color: white; /* White text */
+    padding: 12px 24px; /* Padding for the button */
+    border: none; /* Remove border */
+    border-radius: 50px; /* More rounded corners */
+    text-align: center; /* Center text inside button */
     text-decoration: none; /* Remove underline */
-    margin-top: 20px; /* Space above the button */
+    font-size: 18px; /* Slightly larger text for the button */
+    margin-top: 30px; /* Space above the button */
     cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Button shadow */
 }
 
 .home-button:hover {
-    background-color: #e0a800; /* Darker shade on hover */
+    background-color: #e0a800; /* Darker yellow on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Media Queries */
@@ -36,39 +62,39 @@
     }
     
     .success-message {
-        font-size: 24px;
+        font-size: 28px; /* Adjust size for smaller screens */
     }
     
     h2 {
-        font-size: 20px;
+        font-size: 22px; /* Adjust header size */
     }
     
     p {
-        font-size: 16px;
+        font-size: 16px; /* Adjust paragraph size */
     }
     
     .home-button {
-        padding: 12px 24px;
-        font-size: 16px;
+        padding: 14px 28px; /* Increase button size for better touch targets */
+        font-size: 16px; /* Adjust font size */
     }
 }
 
 @media (max-width: 480px) {
     .success-message {
-        font-size: 20px;
+        font-size: 24px; /* Further reduce font size */
     }
     
     h2 {
-        font-size: 18px;
+        font-size: 20px; /* Adjust header size */
     }
     
     p {
-        font-size: 14px;
+        font-size: 14px; /* Adjust paragraph size */
     }
     
     .home-button {
-        width: 100%;
-        padding: 10px;
-        font-size: 14px;
+        width: 100%; /* Full width button on small screens */
+        padding: 12px;
+        font-size: 16px; /* Adjust font size */
     }
 }
