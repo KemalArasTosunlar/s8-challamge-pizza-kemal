@@ -15,6 +15,7 @@ const OrderPizza = ({
     notes: '',
     selectedQuantity: 1,
     dough: '',
+    fastDelivery: false, // Added fastDelivery to form state
     totalPrice: 0,
   };
 
@@ -29,9 +30,12 @@ const OrderPizza = ({
 
   // Total price hesaplama
   useEffect(() => {
-    const calculatedPrice = (parseFloat(pizza.price.replace('₺', '')) * formData.selectedQuantity + formData.selectedToppings.length * 5).toFixed(2);
+    const basePrice = parseFloat(pizza.price.replace('₺', ''));
+    const toppingsPrice = formData.selectedToppings.length * 5;
+    const fastDeliveryPrice = formData.fastDelivery ? 50 : 0; // Add 50₺ if fast delivery is selected
+    const calculatedPrice = (basePrice * formData.selectedQuantity + toppingsPrice + fastDeliveryPrice).toFixed(2);
     setFormData((prevState) => ({ ...prevState, totalPrice: calculatedPrice }));
-  }, [formData.selectedQuantity, formData.selectedToppings]);
+  }, [formData.selectedQuantity, formData.selectedToppings, formData.fastDelivery]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -66,14 +70,12 @@ const OrderPizza = ({
 
     const { name, size, selectedToppings, totalPrice, selectedQuantity } = formData;
     
-    
     const newErrors = {};
     if (name.length < 3) newErrors.name = "İsim en az 3 karakter olmalıdır.";
     if (!size) newErrors.size = "Boyut seçmelisiniz.";
     if (selectedToppings.length < 4 || selectedToppings.length > 10) newErrors.selectedToppings = "4 ile 10 arasında malzeme seçmelisiniz.";
     if (selectedQuantity < 1) newErrors.selectedQuantity = "Sipariş miktarı 1'den küçük olamaz.";
 
-    
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       toast.error('Lütfen zorunlu alanları doldurun ve hataları düzeltin.');
@@ -104,7 +106,6 @@ const OrderPizza = ({
     }
   };
 
-  
   const sizeOptions = sizes.map((sizeOption) => ({
     label: sizeOption.label,
     value: sizeOption.id
@@ -223,7 +224,20 @@ const OrderPizza = ({
         />
       </FormGroup>
 
-      
+      {/* Hızlı Teslimat */}
+      <FormGroup>
+        <Label for="fastDelivery" className="text-[#292929]">
+          <Input
+            type="checkbox"
+            id="fastDelivery"
+            name="fastDelivery"
+            checked={formData.fastDelivery}
+            onChange={handleChange}
+          />
+          Hızlı Teslimat (Ekstra 50₺)
+        </Label>
+      </FormGroup>
+
       <FormGroup>
         <Label className="text-[#292929]">Sipariş Özeti</Label>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -236,6 +250,7 @@ const OrderPizza = ({
           <div className="summary-box">
             <h3>Sipariş Toplamı</h3>
             <p>Seçimler: <span className="selections">{pizza.name} + {formData.selectedToppings.join(', ')}</span></p>
+            {formData.fastDelivery && <p>Hızlı Teslimat: <span style={{ color: 'red' }}>50₺</span></p>}
             <p>Toplam: <span className="total" style={{ color: 'red' }}>
               {formData.totalPrice}₺
             </span></p>
