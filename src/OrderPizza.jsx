@@ -141,7 +141,8 @@ const OrderPizza = ({
           value={formData.name}
           onChange={handleNameChange}  
           required
-          className="border border-[#292929] rounded p-2"
+          className="border-2 border-solid border-[#292929] rounded p-2 focus:outline-none focus:ring-2 focus:ring-[#292929] w-full resize-x"
+          style={{ minWidth: '300px', maxWidth: '100%' }}
         />
         {errors.name && <div className="error-message">{errors.name}</div>} 
       </FormGroup>
@@ -217,7 +218,8 @@ const OrderPizza = ({
           name="notes"
           value={formData.notes}
           onChange={handleChange}
-          className="border border-[#292929] rounded p-2"
+          className="border-2 border-solid border-[#292929] rounded p-2 focus:outline-none focus:ring-2 focus:ring-[#292929]"
+          style={{ minWidth: '300px', maxWidth: '100%' }}
         />
       </FormGroup>
 

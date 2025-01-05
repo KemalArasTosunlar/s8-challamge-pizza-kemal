@@ -2,8 +2,13 @@
 body {
     font-family: 'Barlow', sans-serif; /* Updated font to Barlow */
     display: block; /* Change to block to prevent stretching */
+    margin: 0;
+    padding: 0;
 }
-
+form {
+    margin: 0;
+    padding: 0;
+}
 .max-w-md {
     max-width: 850px; /* Set a new maximum width for the form */
     margin: 0 auto; /* Center the form horizontally */
@@ -140,82 +145,225 @@ body {
     background-color: #e0a800; /* Darker shade on hover */
 }
 
-/* Responsive Media Queries */
+/* Pizza Header Styles */
+.pizza-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pizza-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.pizza-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+/* Form Controls */
+.form-control {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+}
+
+/* Size and Dough Selection */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radio-input {
+  margin-right: 0.5rem;
+}
+
+/* Toppings Grid */
+.toppings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
 @media (max-width: 768px) {
-    .max-w-md {
-        padding: 0 15px;
-    }
-    
-    .pizza-name {
-        font-size: 20px;
-    }
-    
-    .pizza-info {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-    
-    .form-group {
-        margin-bottom: 15px;
-    }
-    
-    .quantity-control {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .summary-box {
-        text-align: center;
-    }
-    
-    .order-button {
-        width: 100%;
-        padding: 15px;
-    }
-    
-    .container {
-        font-size: 14px;
-        padding-left: 25px;
-    }
-    
-    .checkmark {
-        height: 12px;
-        width: 12px;
-    }
-    
-    .container .checkmark:after {
-        top: 6px;
-        left: 6px;
-        width: 6px;
-        height: 6px;
-    }
+  .toppings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Quantity Controls */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quantity-button {
+  background-color: #FDC913;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.quantity-button:hover {
+  background-color: #e0b000;
+}
+
+.quantity-display {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+}
+
+/* Order Summary */
+.order-summary {
+  text-align: right;
+}
+
+.total-price {
+  color: #DC2626;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.order-button {
+  background-color: #FDC913;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.order-button:hover {
+  background-color: #e0b000;
+}
+
+/* Error Messages */
+.error-message {
+  color: #DC2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .pizza-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .quantity-controls {
+    flex-direction: column;
+  }
+  
+  .order-summary {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .max-w-md {
+    padding: 0 15px;
+  }
+  
+  .pizza-name {
+    font-size: 20px;
+  }
+  
+  .pizza-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .quantity-control {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .summary-box {
+    text-align: center;
+  }
+  
+  .order-button {
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .container {
+    font-size: 14px;
+    padding-left: 25px;
+  }
+  
+  .checkmark {
+    height: 12px;
+    width: 12px;
+  }
+  
+  .container .checkmark:after {
+    top: 6px;
+    left: 6px;
+    width: 6px;
+    height: 6px;
+  }
 }
 
 @media (max-width: 480px) {
-    .pizza-name {
-        font-size: 18px;
-    }
-    
-    .pizza-description {
-        font-size: 14px;
-    }
-    
-    .form-group > div {
-        flex-direction: column;
-    }
-    
-    .toppings-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .quantity-control button {
-        padding: 8px;
-    }
-    
-    .border-box {
-        padding: 8px;
-    }
+  .pizza-name {
+    font-size: 18px;
+  }
+  
+  .pizza-description {
+    font-size: 14px;
+  }
+  
+  .form-group > div {
+    flex-direction: column;
+  }
+  
+  .toppings-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .quantity-control button {
+    padding: 8px;
+  }
+  
+  .border-box {
+    padding: 8px;
+  }
 }
-
