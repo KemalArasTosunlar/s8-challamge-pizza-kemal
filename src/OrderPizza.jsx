@@ -66,14 +66,14 @@ const OrderPizza = ({
 
     const { name, size, selectedToppings, totalPrice, selectedQuantity } = formData;
     
-    // Form doğrulama
+    
     const newErrors = {};
     if (name.length < 3) newErrors.name = "İsim en az 3 karakter olmalıdır.";
     if (!size) newErrors.size = "Boyut seçmelisiniz.";
     if (selectedToppings.length < 4 || selectedToppings.length > 10) newErrors.selectedToppings = "4 ile 10 arasında malzeme seçmelisiniz.";
     if (selectedQuantity < 1) newErrors.selectedQuantity = "Sipariş miktarı 1'den küçük olamaz.";
 
-    // Eğer herhangi bir hata varsa, hataları göster
+    
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       toast.error('Lütfen zorunlu alanları doldurun ve hataları düzeltin.');
@@ -104,7 +104,7 @@ const OrderPizza = ({
     }
   };
 
-  // Dinamik checkbox, radio ve select alanları için arrayler
+  
   const sizeOptions = sizes.map((sizeOption) => ({
     label: sizeOption.label,
     value: sizeOption.id
@@ -139,15 +139,15 @@ const OrderPizza = ({
           id="name"
           name="name"
           value={formData.name}
-          onChange={handleNameChange}  // Validation function for name
+          onChange={handleNameChange}  
           required
           className="border border-[#292929] rounded p-2"
         />
-        {errors.name && <div className="error-message">{errors.name}</div>} {/* Display error message */}
+        {errors.name && <div className="error-message">{errors.name}</div>} 
       </FormGroup>
 
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        {/* Boyut Seçimleri */}
+        
         <FormGroup style={{ marginRight: '20px' }}>
           <Label className="text-[#292929]"><strong>Boyut Seç</strong></Label>
           <div>
@@ -168,7 +168,7 @@ const OrderPizza = ({
           {errors.size && <div className="error-message">{errors.size}</div>}
         </FormGroup>
 
-        {/* Hamur Seçenekleri */}
+        
         <FormGroup>
           <Label className="text-[#292929]"><strong>Hamur Kalınlığı</strong></Label>
           <select
@@ -189,7 +189,7 @@ const OrderPizza = ({
       {/* Malzemeler Seçimi */}
       <FormGroup>
         <Label><strong className="text-[#292929]">Ek Malzemeler</strong></Label>
-        <p>En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
+        <p>En Az 4 En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
           {toppingOptions.map((option) => (
             <div key={option.value} style={{ width: '30%' }}>
@@ -221,7 +221,7 @@ const OrderPizza = ({
         />
       </FormGroup>
 
-      {/* Sipariş Özeti */}
+      
       <FormGroup>
         <Label className="text-[#292929]">Sipariş Özeti</Label>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
